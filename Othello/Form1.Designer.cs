@@ -35,9 +35,10 @@ namespace Othello
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightPink;
             this.ClientSize = new System.Drawing.Size(831, 659);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "O’Neillo v1.0";
             this.ResumeLayout(false);
 
         }
