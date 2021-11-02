@@ -48,6 +48,11 @@ namespace Othello
             Player1Turn = true;            
         }
 
+        /// <summary>
+        /// Event for when the counters are clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Which_Element_Clicked(object sender, EventArgs e)
         {
             Column = imageArray.Get_Col(sender);
@@ -58,6 +63,11 @@ namespace Othello
             FlipCounters(IsValidMove());
         }
 
+        /// <summary>
+        /// Initilises the cardArray. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
             Debug.WriteLine(Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Images", "Green_Square.jpg")));
@@ -77,6 +87,11 @@ namespace Othello
             cardArray[3, 4] = 0;
         }
 
+        /// <summary>
+        /// Button to start the game and load the board.
+        /// </summary>
+        /// <param name="sender">The button clicked.</param>
+        /// <param name="e">Event</param>
         private void StartBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(PlayerOneTxt.Text) || string.IsNullOrEmpty(PlayerTwoTxt.Text))
@@ -92,6 +107,10 @@ namespace Othello
             imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
         }
 
+        /// <summary>
+        /// Validates moves in all directions.
+        /// </summary>
+        /// <returns>List of valid and invalid directions.</returns>
         private bool[] IsValidMove()
         {
             // All direction are validated and added to this array
@@ -511,6 +530,10 @@ namespace Othello
             return validDirections;
         }
 
+        /// <summary>
+        /// This method flips the counters on the display based on the player turn using the parameter to decide which direction to flip in.
+        /// </summary>
+        /// <param name="validDirections">Tells the method which direction has a valid flip.</param>
         private void FlipCounters(bool[] validDirections)
         {
             for (int b = 0; b < validDirections.Length; b++)
