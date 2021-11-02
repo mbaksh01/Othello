@@ -70,7 +70,7 @@ namespace Othello
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            Debug.WriteLine(Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Images", "Green_Square.jpg")));
+            //Debug.WriteLine(Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Images", "Green_Square.jpg")));
 
             for (int Row = 0; Row < 8; Row++)
             {
