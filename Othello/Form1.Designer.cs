@@ -48,6 +48,7 @@ namespace Othello
             this.dEBUGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playerTurn = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerTwoImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerOneImg)).BeginInit();
@@ -57,6 +58,7 @@ namespace Othello
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panel1.Controls.Add(this.playerTurn);
             this.panel1.Controls.Add(this.StartBtn);
             this.panel1.Controls.Add(this.PlayerTwoTxt);
             this.panel1.Controls.Add(this.PlayerOneTxt);
@@ -66,9 +68,9 @@ namespace Othello
             this.panel1.Controls.Add(this.PlayerTwoCountLbl);
             this.panel1.Controls.Add(this.PlayerOneCountLbl);
             this.panel1.Controls.Add(this.PlayerOneXLbl);
-            this.panel1.Location = new System.Drawing.Point(12, 715);
+            this.panel1.Location = new System.Drawing.Point(12, 707);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(858, 126);
+            this.panel1.Size = new System.Drawing.Size(858, 134);
             this.panel1.TabIndex = 0;
             // 
             // StartBtn
@@ -159,7 +161,7 @@ namespace Othello
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.LightPink;
+            this.menuStrip1.BackColor = System.Drawing.Color.PaleVioletRed;
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gameToolStripMenuItem,
@@ -183,13 +185,13 @@ namespace Othello
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
             this.loadToolStripMenuItem.Text = "Load";
             // 
             // serToolStripMenuItem
@@ -217,8 +219,16 @@ namespace Othello
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // playerTurn
+            // 
+            this.playerTurn.AutoSize = true;
+            this.playerTurn.Location = new System.Drawing.Point(399, 20);
+            this.playerTurn.Name = "playerTurn";
+            this.playerTurn.Size = new System.Drawing.Size(0, 20);
+            this.playerTurn.TabIndex = 10;
             // 
             // Form1
             // 
@@ -229,7 +239,9 @@ namespace Othello
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(900, 900);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(900, 900);
             this.Name = "Form1";
             this.Text = "O’Neillo v1.0";
@@ -266,6 +278,7 @@ namespace Othello
         private System.Windows.Forms.ToolStripMenuItem dEBUGToolStripMenuItem;
         private System.Windows.Forms.Button StartBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Label playerTurn;
     }
 }
 

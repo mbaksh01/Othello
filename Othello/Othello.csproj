@@ -4,9 +4,16 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>Images\OthelloIcon.ico</ApplicationIcon>
+    <ApplicationIcon>OthelloIcon.ico</ApplicationIcon>
     <Win32Resource />
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net5.0-windows\Images\0.png" />
+    <None Include="bin\Debug\net5.0-windows\Images\1.png" />
+    <None Include="bin\Debug\net5.0-windows\Images\10.png" />
+    <None Include="bin\Debug\net5.0-windows\Images\OthelloIcon.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
