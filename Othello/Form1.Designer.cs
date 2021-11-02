@@ -99,7 +99,7 @@ namespace Othello
             // 
             // PlayerTwoImg
             // 
-            this.PlayerTwoImg.Image = global::Othello.Properties.Resources.Black_Square;
+            this.PlayerTwoImg.Image = global::Othello.Properties.Resources._1;
             this.PlayerTwoImg.InitialImage = null;
             this.PlayerTwoImg.Location = new System.Drawing.Point(489, 47);
             this.PlayerTwoImg.Name = "PlayerTwoImg";
@@ -109,7 +109,7 @@ namespace Othello
             // 
             // PlayerOneImg
             // 
-            this.PlayerOneImg.Image = global::Othello.Properties.Resources.White_Square;
+            this.PlayerOneImg.Image = global::Othello.Properties.Resources._0;
             this.PlayerOneImg.InitialImage = null;
             this.PlayerOneImg.Location = new System.Drawing.Point(90, 47);
             this.PlayerOneImg.Name = "PlayerOneImg";
