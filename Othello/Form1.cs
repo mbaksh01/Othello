@@ -652,6 +652,143 @@ namespace Othello
                         }
                     }
                 }
+                else
+                {
+                    if (validDirections[b])
+                    {
+                        int columnCounter = Column;
+
+                        switch (b)
+                        {
+                            // North
+                            case 0:
+                                for (int row = Row; row >= 0; row--)
+                                {
+                                    if (cardArray[row, Column] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, Column] == 0)
+                                    {
+                                        cardArray[row, Column] = 1;
+                                    }
+                                }
+                                break;
+                            // South
+                            case 1:
+                                for (int row = Row; row > 8; row++)
+                                {
+                                    if (cardArray[row, Column] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, Column] == 0)
+                                    {
+                                        cardArray[row, Column] = 1;
+                                    }
+                                }
+                                break;
+                            // East
+                            case 2:
+                                for (int column = Column; column > 8; column++)
+                                {
+                                    if (cardArray[Row, column] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[Row, column] == 0)
+                                    {
+                                        cardArray[Row, column] = 1;
+                                    }
+                                }
+                                break;
+                            // West
+                            case 3:
+                                for (int column = Column; column >= 0; column++)
+                                {
+                                    if (cardArray[Row, column] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[Row, column] == 0)
+                                    {
+                                        cardArray[Row, column] = 1;
+                                    }
+                                }
+                                break;
+                            // Northwest
+                            case 4:
+                                for (int row = Row; row >= 0; row--)
+                                {
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        cardArray[row, columnCounter] = 1;
+                                        columnCounter--;
+                                    }
+                                }
+                                break;
+                            // Northeast
+                            case 5:
+                                for (int row = Row; row >= 0; row--)
+                                {
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        cardArray[row, columnCounter] = 1;
+                                        columnCounter++;
+                                    }
+                                }
+                                break;
+                            // Southeast
+                            case 6:
+                                for (int row = Row; row < 8; row++)
+                                {
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        cardArray[row, columnCounter] = 1;
+                                        columnCounter++;
+                                    }
+                                }
+                                break;
+                            // Southwest
+                            case 7:
+                                for (int row = Row; row < 8; row++)
+                                {
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        cardArray[row, columnCounter] = 1;
+                                        columnCounter--;
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
             }
         }
     }
