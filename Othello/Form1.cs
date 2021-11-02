@@ -55,7 +55,7 @@ namespace Othello
 
             PictureBox pictureBox = imageArray.Get_Element(sender);
 
-            IsValidMove();
+            FlipCounters(IsValidMove());
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -509,6 +509,150 @@ namespace Othello
             }
 
             return validDirections;
+        }
+
+        private void FlipCounters(bool[] validDirections)
+        {
+            for (int b = 0; b < validDirections.Length; b++)
+            {
+                if (Player1Turn)
+                {
+                    if (validDirections[b])
+                    {
+                        int columnCounter = Column;
+                        
+                        switch (b)
+                        {
+                            // North
+                            case 0:
+                                for (int row = Row; row >= 0; row--)
+                                {
+                                    if (cardArray[row, Column] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, Column] == 1)
+                                    {
+                                        cardArray[row, Column] = 0;
+                                    }
+                                }
+                                break;
+                            // South
+                            case 1:
+                                for (int row = Row; row > 8; row++)
+                                {
+                                    if (cardArray[row, Column] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, Column] == 1)
+                                    {
+                                        cardArray[row, Column] = 0;
+                                    }
+                                }
+                                break;
+                            // East
+                            case 2:
+                                for (int column = Column;  column > 8; column++)
+                                {
+                                    if (cardArray[Row, column] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[Row, column] == 1)
+                                    {
+                                        cardArray[Row, column] = 0;
+                                    }
+                                }
+                                break;
+                            // West
+                            case 3:
+                                for (int column = Column; column >= 0; column++)
+                                {
+                                    if (cardArray[Row, column] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[Row, column] == 1)
+                                    {
+                                        cardArray[Row, column] = 0;
+                                    }
+                                }
+                                break;
+                            // Northwest
+                            case 4:
+                                for (int row = Row; row >= 0; row--)
+                                {
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        cardArray[row, columnCounter] = 0;
+                                        columnCounter--;
+                                    }
+                                }
+                                break;
+                            // Northeast
+                            case 5:
+                                for (int row = Row; row >= 0; row--)
+                                {
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        cardArray[row, columnCounter] = 0;
+                                        columnCounter++;
+                                    }
+                                }
+                                break;
+                            // Southeast
+                            case 6:
+                                for (int row = Row; row < 8; row++)
+                                {
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        cardArray[row, columnCounter] = 0;
+                                        columnCounter++;
+                                    }
+                                }
+                                break;
+                            // Southwest
+                            case 7:
+                                for (int row = Row; row < 8; row++)
+                                {
+                                    if (cardArray[row, columnCounter] == 0)
+                                    {
+                                        break;
+                                    }
+
+                                    if (cardArray[row, columnCounter] == 1)
+                                    {
+                                        cardArray[row, columnCounter] = 0;
+                                        columnCounter--;
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
         }
     }
 }
