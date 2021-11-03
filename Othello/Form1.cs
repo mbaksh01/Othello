@@ -30,6 +30,8 @@ namespace Othello
         /// </summary>
         public int Row { get; set; }
 
+        public bool GameStarted { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -43,147 +45,111 @@ namespace Othello
         /// <param name="e"></param>
         private void Which_Element_Clicked(object sender, EventArgs e)
         {
+            bool madeValidMove = false;
+            int tempRow = imageArray.Get_Row(sender);
+            int tempColumn = imageArray.Get_Col(sender);
+
             // North
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(-1, 0))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(-1, 0);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
             // South
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(1, 0))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(1, 0);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
             // West
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(0, -1))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(0, -1);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
             // East
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(0, 1))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(0, 1);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
             // Northeast
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(-1, 1))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(-1, 1);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
             // Southeast
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(1, 1))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(1, 1);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
             // Northwest
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
+            Column = tempColumn;
+            Row = tempRow;
             if (IsValidMove(-1, -1))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
+                Column = tempColumn;
+                Row = tempRow;
                 FlipCounters(-1, -1);
-                if (CurrentPlayer == 0)
-                {
-                    CurrentPlayer = 1;
-                }
-                else
-                {
-                    CurrentPlayer = 0;
-                }
+                madeValidMove = true;
             }
 
-            // Northeast
-            Column = imageArray.Get_Col(sender);
-            Row = imageArray.Get_Row(sender);
-            if (IsValidMove(-1, 1))
+            // Southwest
+            Column = tempColumn;
+            Row = tempRow;
+            if (IsValidMove(1, -1))
             {
-                Column = imageArray.Get_Col(sender);
-                Row = imageArray.Get_Row(sender);
-                FlipCounters(-1, 1);
+                Column = tempColumn;
+                Row = tempRow;
+                FlipCounters(1, -1);
+                madeValidMove = true;
+            }
+
+            if (madeValidMove)
+            {
+                cardArray[tempRow, tempColumn] = CurrentPlayer;
+
                 if (CurrentPlayer == 0)
                 {
                     CurrentPlayer = 1;
+                    playerTurn.Text = PlayerTwoTxt.Text + "'s turn.";
                 }
                 else
                 {
                     CurrentPlayer = 0;
+                    playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
                 }
             }
 
@@ -198,8 +164,6 @@ namespace Othello
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            //Debug.WriteLine(Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, @"..\..\..\", "Images", "Green_Square.jpg")));
-
             for (int Row = 0; Row < 8; Row++)
             {
                 for (int Column = 0; Column < 8; Column++)
@@ -213,25 +177,6 @@ namespace Othello
 
             cardArray[4, 3] = 0;
             cardArray[3, 4] = 0;
-        }
-
-        /// <summary>
-        /// Button to start the game and load the board.
-        /// </summary>
-        /// <param name="sender">The button clicked.</param>
-        /// <param name="e">Event</param>
-        private void StartBtn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(PlayerOneTxt.Text) || string.IsNullOrEmpty(PlayerTwoTxt.Text))
-            {
-                MessageBox.Show("Player names can not be empty.");
-                return;
-            }
-
-            playerTurn.Text = Player1Name + "'s turn.";
-
-            imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 0, "Images\\");
-            imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
         }
 
         /// <summary>
@@ -277,6 +222,9 @@ namespace Othello
         {
             while (Column + yDirection >= 0 && Column + yDirection < 8 && Row + xDirection >= 0 && Row + xDirection < 8)
             {
+                Row += xDirection;
+                Column += yDirection;
+
                 if (cardArray[Row, Column] == CurrentPlayer)
                 {
                     break;
@@ -285,10 +233,67 @@ namespace Othello
                 {
                     cardArray[Row, Column] = CurrentPlayer;
                 }
-
-                Row += xDirection;
-                Column += yDirection;
             }
+        }
+
+        /// <summary>
+        /// Button to start the game and load the board.
+        /// </summary>
+        /// <param name="sender">The button clicked.</param>
+        /// <param name="e">Event</param>
+        private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageArray != null)
+            {
+                if (MessageBox.Show("Would you like to save current game?", "Save Game", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    if (SaveGame())
+                    {
+                        MessageBox.Show("Game saved successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Game failed to save.");
+                    }
+                }
+            }
+
+            if (string.IsNullOrEmpty(PlayerOneTxt.Text) || string.IsNullOrEmpty(PlayerTwoTxt.Text))
+            {
+                MessageBox.Show("Names can not be empty.");
+                return;
+            }
+
+            imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
+            imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
+            playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
+        }
+
+        private bool SaveGame()
+        {
+            return true;
+        }
+
+        private bool LoadGame()
+        {
+            return true;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (imageArray != null)
+            {
+                if (MessageBox.Show("Do you want to save the game?", "Save Game", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    SaveGame();
+                }
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
         }
     }
 }

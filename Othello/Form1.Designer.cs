@@ -31,7 +31,7 @@ namespace Othello
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.StartBtn = new System.Windows.Forms.Button();
+            this.playerTurn = new System.Windows.Forms.Label();
             this.PlayerTwoTxt = new System.Windows.Forms.TextBox();
             this.PlayerOneTxt = new System.Windows.Forms.TextBox();
             this.PlayerTwoImg = new System.Windows.Forms.PictureBox();
@@ -44,11 +44,12 @@ namespace Othello
             this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dEBUGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.speakToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playerTurn = new System.Windows.Forms.Label();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerTwoImg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PlayerOneImg)).BeginInit();
@@ -59,7 +60,6 @@ namespace Othello
             // 
             this.panel1.BackColor = System.Drawing.Color.PaleVioletRed;
             this.panel1.Controls.Add(this.playerTurn);
-            this.panel1.Controls.Add(this.StartBtn);
             this.panel1.Controls.Add(this.PlayerTwoTxt);
             this.panel1.Controls.Add(this.PlayerOneTxt);
             this.panel1.Controls.Add(this.PlayerTwoImg);
@@ -73,15 +73,13 @@ namespace Othello
             this.panel1.Size = new System.Drawing.Size(858, 134);
             this.panel1.TabIndex = 0;
             // 
-            // StartBtn
+            // playerTurn
             // 
-            this.StartBtn.Location = new System.Drawing.Point(785, 80);
-            this.StartBtn.Name = "StartBtn";
-            this.StartBtn.Size = new System.Drawing.Size(60, 29);
-            this.StartBtn.TabIndex = 2;
-            this.StartBtn.Text = "Start";
-            this.StartBtn.UseVisualStyleBackColor = true;
-            this.StartBtn.Click += new System.EventHandler(this.StartBtn_Click);
+            this.playerTurn.AutoSize = true;
+            this.playerTurn.Location = new System.Drawing.Point(399, 20);
+            this.playerTurn.Name = "playerTurn";
+            this.playerTurn.Size = new System.Drawing.Size(0, 20);
+            this.playerTurn.TabIndex = 10;
             // 
             // PlayerTwoTxt
             // 
@@ -177,7 +175,9 @@ namespace Othello
             // 
             this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.saveToolStripMenuItem,
-            this.loadToolStripMenuItem});
+            this.loadToolStripMenuItem,
+            this.newGameToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
             this.gameToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.gameToolStripMenuItem.Text = "Game";
@@ -185,28 +185,36 @@ namespace Othello
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(125, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.loadToolStripMenuItem.Text = "Load";
+            // 
+            // newGameToolStripMenuItem
+            // 
+            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newGameToolStripMenuItem.Text = "New Game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // serToolStripMenuItem
             // 
             this.serToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dEBUGToolStripMenuItem});
+            this.speakToolStripMenuItem});
             this.serToolStripMenuItem.Name = "serToolStripMenuItem";
             this.serToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.serToolStripMenuItem.Text = "Settings";
             // 
-            // dEBUGToolStripMenuItem
+            // speakToolStripMenuItem
             // 
-            this.dEBUGToolStripMenuItem.Name = "dEBUGToolStripMenuItem";
-            this.dEBUGToolStripMenuItem.Size = new System.Drawing.Size(140, 26);
-            this.dEBUGToolStripMenuItem.Text = "DEBUG";
+            this.speakToolStripMenuItem.CheckOnClick = true;
+            this.speakToolStripMenuItem.Name = "speakToolStripMenuItem";
+            this.speakToolStripMenuItem.Size = new System.Drawing.Size(132, 26);
+            this.speakToolStripMenuItem.Text = "Speak";
             // 
             // helpToolStripMenuItem
             // 
@@ -219,16 +227,16 @@ namespace Othello
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // playerTurn
+            // exitToolStripMenuItem
             // 
-            this.playerTurn.AutoSize = true;
-            this.playerTurn.Location = new System.Drawing.Point(399, 20);
-            this.playerTurn.Name = "playerTurn";
-            this.playerTurn.Size = new System.Drawing.Size(0, 20);
-            this.playerTurn.TabIndex = 10;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -275,10 +283,11 @@ namespace Othello
         private System.Windows.Forms.ToolStripMenuItem tarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dEBUGToolStripMenuItem;
-        private System.Windows.Forms.Button StartBtn;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Label playerTurn;
+        private System.Windows.Forms.ToolStripMenuItem speakToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

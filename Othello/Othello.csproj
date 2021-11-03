@@ -9,7 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="bin\Debug\net5.0-windows\Images\0.png" />
+    <None Include="bin\Debug\net5.0-windows\Images\Game Board.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="bin\Debug\net5.0-windows\Images\0.png" />
     <None Include="bin\Debug\net5.0-windows\Images\1.png" />
     <None Include="bin\Debug\net5.0-windows\Images\10.png" />
     <None Include="bin\Debug\net5.0-windows\Images\OthelloIcon.ico" />

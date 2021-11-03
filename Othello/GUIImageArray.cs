@@ -177,6 +177,7 @@ namespace GUIImageArray
             ImageElement[r, c].ImageLocation = Path_To_Picture + ImageName_Without_Extension + ".PNG";
             return true;
         }
+
         /// <summary>
         /// Changes all images within the array to Red.PNG or Blue.PNG
         /// </summary>
