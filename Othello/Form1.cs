@@ -13,7 +13,7 @@ namespace Othello
         /// </summary>
         public int CurrentPlayer { get; set; }
 
-        int[,] cardArray = new int[8,8];
+        int[,] cardArray { get; set; }
 
         /// <summary>
         /// Grid that gets displayed.
@@ -158,28 +158,6 @@ namespace Othello
         }
 
         /// <summary>
-        /// Initilises the cardArray. 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            for (int Row = 0; Row < 8; Row++)
-            {
-                for (int Column = 0; Column < 8; Column++)
-                {
-                    cardArray[Row, Column] = 10;
-                }
-            }
-
-            cardArray[3, 3] = 1;
-            cardArray[4, 4] = 1;
-
-            cardArray[4, 3] = 0;
-            cardArray[3, 4] = 0;
-        }
-
-        /// <summary>
         /// Checks whether a move is valid.
         /// </summary>
         /// <param name="xDirection">X-Direction in which to move.</param>
@@ -264,6 +242,7 @@ namespace Othello
                 return;
             }
 
+            InitaliseCardArray();
             imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
             imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
             playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
@@ -271,7 +250,47 @@ namespace Othello
 
         private bool SaveGame()
         {
-            return true;
+            if (cardArray == null)
+            {
+                return false;
+            }
+
+            string filePath;
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Comma Separated Values (*.csv)|*.csv";
+                saveFileDialog.InitialDirectory = Path.Combine(Environment.CurrentDirectory, "Saves\\");
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = saveFileDialog.FileName;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            using (StreamWriter writer = new StreamWriter(filePath, true))
+            {
+                try
+                {
+                    writer.Write(PlayerOneTxt.Text + ",");
+                    writer.Write(PlayerTwoTxt.Text + ",");
+                    writer.Write(CurrentPlayer.ToString() + ",");
+
+                    foreach (int i in cardArray)
+                    {
+                        writer.Write(i.ToString() + ",");
+                    }
+
+                    return true;
+                }
+                catch (IOException)
+                {
+                    return false;
+                }
+            }
         }
 
         private bool LoadGame()
@@ -294,6 +313,39 @@ namespace Othello
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.Show();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SaveGame())
+            {
+                MessageBox.Show("Game saved successfully.");
+                InitaliseCardArray();
+                
+            }
+            else
+            {
+                MessageBox.Show("Game failed to save.");
+            }
+        }
+
+        private void InitaliseCardArray()
+        {
+            cardArray = new int[8, 8];
+
+            for (int Row = 0; Row < 8; Row++)
+            {
+                for (int Column = 0; Column < 8; Column++)
+                {
+                    cardArray[Row, Column] = 10;
+                }
+            }
+
+            cardArray[3, 3] = 1;
+            cardArray[4, 4] = 1;
+
+            cardArray[4, 3] = 0;
+            cardArray[3, 4] = 0;
         }
     }
 }
