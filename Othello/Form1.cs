@@ -9,18 +9,6 @@ namespace Othello
     public partial class Form1 : Form
     {
         /// <summary>
-        /// White Square
-        /// 0
-        /// </summary>
-        public string Player1Name { get; set; }
-
-        /// <summary>
-        /// Balck Square
-        /// 1
-        /// </summary>
-        public string Player2Name { get; set; }
-
-        /// <summary>
         /// Player turn, used to switch between each player;
         /// </summary>
         public int CurrentPlayer { get; set; }
@@ -46,7 +34,6 @@ namespace Othello
         {
             InitializeComponent();
             CurrentPlayer = 0;
-            playerTurn.Text = Player1Name + "'s turn.";
         }
 
         /// <summary>
@@ -241,8 +228,7 @@ namespace Othello
                 return;
             }
 
-            Player1Name = PlayerOneTxt.Text;
-            Player2Name = PlayerTwoTxt.Text;
+            playerTurn.Text = Player1Name + "'s turn.";
 
             imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 0, "Images\\");
             imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
