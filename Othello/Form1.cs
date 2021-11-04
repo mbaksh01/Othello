@@ -295,7 +295,52 @@ namespace Othello
 
         private bool LoadGame()
         {
+            string filePath;
+            string[] fileContent;
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Comma Separated Values (*.csv)|*.csv";
+                openFileDialog.InitialDirectory = Path.Combine(Environment.CurrentDirectory, "Saves\\");
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                int counter = 3;
+
+                try
+                {
+                    fileContent = reader.ReadToEnd().Split(',');
+
+                    PlayerOneTxt.Text = fileContent[0];
+                    PlayerTwoTxt.Text = fileContent[1];
+                    CurrentPlayer = int.Parse(fileContent[2]);
+
+                    for (int Row = 0; Row < 8; Row++)
+                    {
+                        for (int Column = 0; Column < 8; Column++)
+                        {
+                            cardArray[Row, Column] = int.Parse(fileContent[counter]);
+                            counter++;
+                        }
+                    }
+                }
+                catch (IOException)
+                {
+                    return false;
+                }
+            }
+
             return true;
+                
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -304,9 +349,18 @@ namespace Othello
             {
                 if (MessageBox.Show("Do you want to save the game?", "Save Game", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    SaveGame();
+                    if (SaveGame())
+                    {
+                        MessageBox.Show("Game saved successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Game failed to save.");
+                    }
                 }
             }
+
+            Close();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -321,7 +375,7 @@ namespace Othello
             {
                 MessageBox.Show("Game saved successfully.");
                 InitaliseCardArray();
-                
+                imageArray.UpDateImages(cardArray);
             }
             else
             {
@@ -346,6 +400,38 @@ namespace Othello
 
             cardArray[4, 3] = 0;
             cardArray[3, 4] = 0;
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (cardArray == null)
+            {
+                InitaliseCardArray();
+            }
+
+            if (imageArray == null)
+            {
+                imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
+                imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
+            }
+
+            if (!LoadGame())
+            {
+                MessageBox.Show("Game failed to load.");
+            }
+
+            imageArray.UpDateImages(cardArray);
+
+            if (CurrentPlayer == 0)
+            {
+                CurrentPlayer = 1;
+                playerTurn.Text = PlayerTwoTxt.Text + "'s turn.";
+            }
+            else
+            {
+                CurrentPlayer = 0;
+                playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
+            }
         }
     }
 }
