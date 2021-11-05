@@ -249,6 +249,10 @@ namespace Othello
             playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
         }
 
+        /// <summary>
+        /// Method used to save the game when the user says to.
+        /// </summary>
+        /// <returns>Bool to identify whether the save was successful or not.</returns>
         private bool SaveGame()
         {
             if (cardArray == null)
@@ -294,6 +298,10 @@ namespace Othello
             }
         }
 
+        /// <summary>
+        /// Method used to load the game when the user says to.
+        /// </summary>
+        /// <returns></returns>
         private bool LoadGame()
         {
             string filePath;
@@ -405,16 +413,27 @@ namespace Othello
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (cardArray == null)
-            {
-                InitaliseCardArray();
-            }
-
             if (imageArray == null)
             {
                 imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
                 imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
             }
+            else
+            {
+                if (MessageBox.Show("Would you like to save current game?", "Save Game", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    if (SaveGame())
+                    {
+                        MessageBox.Show("Game saved successfully!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Game failed to save.");
+                    }
+                }
+            }
+
+            InitaliseCardArray();
 
             if (!LoadGame())
             {
