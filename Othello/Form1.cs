@@ -30,8 +30,6 @@ namespace Othello
         /// </summary>
         public int Row { get; set; }
 
-        public bool GameStarted { get; set; }
-
         public Form1()
         {
             InitializeComponent();
