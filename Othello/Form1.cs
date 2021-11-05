@@ -301,7 +301,7 @@ namespace Othello
         /// <summary>
         /// Method used to load the game when the user says to.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Bool to identify whether the save was successful or not.</returns>
         private bool LoadGame()
         {
             string filePath;
@@ -352,6 +352,11 @@ namespace Othello
                 
         }
 
+        /// <summary>
+        /// Method used to close the game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (imageArray != null)
@@ -372,12 +377,23 @@ namespace Othello
             Close();
         }
 
+        /// <summary>
+        /// Method used to show information about the game.
+        /// This creates an instance of the AboutForm and displays it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.Show();
         }
 
+        /// <summary>
+        /// Method used to save the game.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (SaveGame())
@@ -392,6 +408,10 @@ namespace Othello
             }
         }
 
+        /// <summary>
+        /// Method used to initalise the cardArray.
+        /// Sets it to the board to its inital state.
+        /// </summary>
         private void InitaliseCardArray()
         {
             cardArray = new int[8, 8];
@@ -411,6 +431,12 @@ namespace Othello
             cardArray[3, 4] = 0;
         }
 
+        /// <summary>
+        /// Method used to load the game.
+        /// Checks if there already is a game in session and, if so, asks the user whether they want to save or not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (imageArray == null)
@@ -430,6 +456,10 @@ namespace Othello
                     {
                         MessageBox.Show("Game failed to save.");
                     }
+                }
+                else
+                {
+                    return;
                 }
             }
 
