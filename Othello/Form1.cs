@@ -30,6 +30,9 @@ namespace Othello
         /// </summary>
         public int Row { get; set; }
 
+        /// <summary>
+        /// Initalise component.
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
