@@ -483,5 +483,30 @@ namespace Othello
                 playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
             }
         }
+
+        /// <summary>
+        /// Used to match the number of counters each player to the information on the screen.
+        /// </summary>
+        private void UpdatePlayerCounter()
+        {
+            int count = 0; 
+
+            foreach (int i in cardArray)
+            {
+                if (i == CurrentPlayer)
+                {
+                    count++;
+                }
+            }
+
+            if (CurrentPlayer == 0)
+            {
+                PlayerOneCountLbl.Text = count.ToString();
+            }
+            else
+            {
+                PlayerTwoCountLbl.Text = count.ToString();
+            }
+        }
     }
 }
