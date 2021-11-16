@@ -84,7 +84,7 @@ namespace Othello
             // PlayerTwoTxt
             // 
             this.PlayerTwoTxt.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PlayerTwoTxt.Location = new System.Drawing.Point(559, 72);
+            this.PlayerTwoTxt.Location = new System.Drawing.Point(640, 72);
             this.PlayerTwoTxt.Name = "PlayerTwoTxt";
             this.PlayerTwoTxt.Size = new System.Drawing.Size(186, 36);
             this.PlayerTwoTxt.TabIndex = 9;
@@ -92,7 +92,7 @@ namespace Othello
             // PlayerOneTxt
             // 
             this.PlayerOneTxt.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PlayerOneTxt.Location = new System.Drawing.Point(160, 72);
+            this.PlayerOneTxt.Location = new System.Drawing.Point(223, 70);
             this.PlayerOneTxt.Name = "PlayerOneTxt";
             this.PlayerOneTxt.Size = new System.Drawing.Size(186, 36);
             this.PlayerOneTxt.TabIndex = 8;
@@ -101,7 +101,7 @@ namespace Othello
             // 
             this.PlayerTwoImg.Image = global::Othello.Properties.Resources._1;
             this.PlayerTwoImg.InitialImage = null;
-            this.PlayerTwoImg.Location = new System.Drawing.Point(489, 47);
+            this.PlayerTwoImg.Location = new System.Drawing.Point(570, 46);
             this.PlayerTwoImg.Name = "PlayerTwoImg";
             this.PlayerTwoImg.Size = new System.Drawing.Size(64, 62);
             this.PlayerTwoImg.TabIndex = 6;
@@ -111,7 +111,7 @@ namespace Othello
             // 
             this.PlayerOneImg.Image = global::Othello.Properties.Resources._0;
             this.PlayerOneImg.InitialImage = null;
-            this.PlayerOneImg.Location = new System.Drawing.Point(90, 47);
+            this.PlayerOneImg.Location = new System.Drawing.Point(153, 45);
             this.PlayerOneImg.Name = "PlayerOneImg";
             this.PlayerOneImg.Size = new System.Drawing.Size(64, 62);
             this.PlayerOneImg.TabIndex = 5;
@@ -121,7 +121,7 @@ namespace Othello
             // 
             this.PlayerTwoXLbl.AutoSize = true;
             this.PlayerTwoXLbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PlayerTwoXLbl.Location = new System.Drawing.Point(443, 63);
+            this.PlayerTwoXLbl.Location = new System.Drawing.Point(524, 62);
             this.PlayerTwoXLbl.Name = "PlayerTwoXLbl";
             this.PlayerTwoXLbl.Size = new System.Drawing.Size(40, 46);
             this.PlayerTwoXLbl.TabIndex = 2;
@@ -131,27 +131,29 @@ namespace Othello
             // 
             this.PlayerTwoCountLbl.AutoSize = true;
             this.PlayerTwoCountLbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PlayerTwoCountLbl.Location = new System.Drawing.Point(411, 63);
+            this.PlayerTwoCountLbl.Location = new System.Drawing.Point(480, 62);
             this.PlayerTwoCountLbl.Name = "PlayerTwoCountLbl";
             this.PlayerTwoCountLbl.Size = new System.Drawing.Size(38, 46);
             this.PlayerTwoCountLbl.TabIndex = 3;
             this.PlayerTwoCountLbl.Text = "2";
+            this.PlayerTwoCountLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PlayerOneCountLbl
             // 
             this.PlayerOneCountLbl.AutoSize = true;
             this.PlayerOneCountLbl.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PlayerOneCountLbl.Location = new System.Drawing.Point(13, 63);
+            this.PlayerOneCountLbl.Location = new System.Drawing.Point(53, 61);
             this.PlayerOneCountLbl.Name = "PlayerOneCountLbl";
             this.PlayerOneCountLbl.Size = new System.Drawing.Size(38, 45);
             this.PlayerOneCountLbl.TabIndex = 4;
             this.PlayerOneCountLbl.Text = "2";
+            this.PlayerOneCountLbl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // PlayerOneXLbl
             // 
             this.PlayerOneXLbl.AutoSize = true;
             this.PlayerOneXLbl.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PlayerOneXLbl.Location = new System.Drawing.Point(44, 63);
+            this.PlayerOneXLbl.Location = new System.Drawing.Point(107, 61);
             this.PlayerOneXLbl.Name = "PlayerOneXLbl";
             this.PlayerOneXLbl.Size = new System.Drawing.Size(40, 46);
             this.PlayerOneXLbl.TabIndex = 1;
@@ -185,28 +187,28 @@ namespace Othello
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // loadToolStripMenuItem
             // 
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            this.loadToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.loadToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.loadToolStripMenuItem.Text = "Load";
             this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
             // 
             // newGameToolStripMenuItem
             // 
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.newGameToolStripMenuItem.Text = "New Game";
             this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

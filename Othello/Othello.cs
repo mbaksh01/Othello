@@ -50,6 +50,11 @@ namespace Othello
             int tempRow = imageArray.Get_Row(sender);
             int tempColumn = imageArray.Get_Col(sender);
 
+            if (cardArray[tempRow, tempColumn] != 10)
+            {
+                return;
+            }
+
             // North
             Column = tempColumn;
             Row = tempRow;
@@ -141,6 +146,10 @@ namespace Othello
             if (madeValidMove)
             {
                 cardArray[tempRow, tempColumn] = CurrentPlayer;
+                if (HasGameEnded())
+                {
+                    return;
+                }
 
                 if (CurrentPlayer == 0)
                 {
@@ -155,6 +164,7 @@ namespace Othello
             }
 
             imageArray.UpDateImages(cardArray);
+            UpdatePlayerCounter();
 
         }
 
@@ -341,6 +351,8 @@ namespace Othello
                             counter++;
                         }
                     }
+
+                    UpdatePlayerCounter();
                 }
                 catch (IOException)
                 {
@@ -441,6 +453,7 @@ namespace Othello
         {
             if (imageArray == null)
             {
+                InitaliseCardArray();
                 imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
                 imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
             }
@@ -457,13 +470,7 @@ namespace Othello
                         MessageBox.Show("Game failed to save.");
                     }
                 }
-                else
-                {
-                    return;
-                }
             }
-
-            InitaliseCardArray();
 
             if (!LoadGame())
             {
@@ -489,23 +496,58 @@ namespace Othello
         /// </summary>
         private void UpdatePlayerCounter()
         {
-            int count = 0; 
+            int playerOneCount = 0;
+            int playerTwoCount = 0;
 
             foreach (int i in cardArray)
             {
-                if (i == CurrentPlayer)
+                if (i == 0)
                 {
-                    count++;
+                    playerOneCount++;
+                }
+                else if (i == 1)
+                {
+                    playerTwoCount++;
                 }
             }
 
-            if (CurrentPlayer == 0)
+            PlayerOneCountLbl.Text = playerOneCount.ToString();
+            PlayerTwoCountLbl.Text = playerTwoCount.ToString();
+        }
+
+        /// <summary>
+        /// Checks if there are any free spaces to click on and if not ends the game.
+        /// </summary>
+        private bool HasGameEnded()
+        {
+            foreach (int i in cardArray)
             {
-                PlayerOneCountLbl.Text = count.ToString();
+                if (i == 10)
+                {
+                    return false;
+                }
+            }
+
+            GameEnded();
+            return true;
+        }
+
+        /// <summary>
+        /// Ends the game.
+        /// </summary>
+        private void GameEnded()
+        {
+            if (int.Parse(PlayerOneCountLbl.Text) > int.Parse(PlayerTwoCountLbl.Text))
+            {
+                MessageBox.Show($"{PlayerOneTxt.Text} is the winner.");
+            }
+            else if (int.Parse(PlayerOneCountLbl.Text) == int.Parse(PlayerTwoCountLbl.Text))
+            {
+                MessageBox.Show("The game was a draw.");
             }
             else
             {
-                PlayerTwoCountLbl.Text = count.ToString();
+                MessageBox.Show($"{PlayerTwoTxt.Text} is the winner.");  
             }
         }
     }
