@@ -61,7 +61,7 @@ namespace Othello
             // 
             this.textBox1.CausesValidation = false;
             this.textBox1.Location = new System.Drawing.Point(479, 125);
-            this.textBox1.MaximumSize = new System.Drawing.Size(100000000, 10000000);
+            this.textBox1.MaximumSize = new System.Drawing.Size(100000004, 10000000);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;

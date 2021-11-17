@@ -17,7 +17,7 @@ namespace Othello
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Ottelo());
+            Application.Run(new Form1());
         }
     }
 }

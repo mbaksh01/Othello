@@ -13,12 +13,12 @@ namespace Othello
         /// </summary>
         public int CurrentPlayer { get; set; }
 
-        int[,] cardArray { get; set; }
+        int[,] cardArray {get; set;}
 
         /// <summary>
         /// Grid that gets displayed.
         /// </summary>
-        GImageArray imageArray { get; set; }
+        GImageArray imageArray {get; set;}  
 
         /// <summary>
         /// Column number of the most recent grid click.
@@ -36,6 +36,7 @@ namespace Othello
         public Form1()
         {
             InitializeComponent();
+            InitaliseCardArray();
             CurrentPlayer = 0;
         }
 
@@ -232,9 +233,12 @@ namespace Othello
         /// <param name="e">Event</param>
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DialogResult dialogResult;
+
             if (imageArray != null)
             {
-                if (MessageBox.Show("Would you like to save current game?", "Save Game", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                dialogResult = MessageBox.Show("Would you like to save current game?", "Save Game", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
                 {
                     if (SaveGame())
                     {
@@ -254,8 +258,14 @@ namespace Othello
             }
 
             InitaliseCardArray();
-            imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
-            imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
+
+            if (imageArray == null)
+            {
+                imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
+                imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
+            }
+
+            imageArray.UpDateImages(cardArray);
             playerTurn.Text = PlayerOneTxt.Text + "'s turn.";
         }
 
@@ -454,8 +464,8 @@ namespace Othello
             if (imageArray == null)
             {
                 InitaliseCardArray();
-                imageArray = new GImageArray(this, cardArray, 50, 50, 200, 50, 5, "Images\\");
-                imageArray.Which_Element_Clicked += new GImageArray.ImageClickedEventHandler(Which_Element_Clicked);
+                imageArray.UpDateImages(cardArray);
+                
             }
             else
             {
@@ -549,6 +559,11 @@ namespace Othello
             {
                 MessageBox.Show($"{PlayerTwoTxt.Text} is the winner.");  
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
