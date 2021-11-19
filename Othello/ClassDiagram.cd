@@ -9,11 +9,11 @@
   <Class Name="Othello.AboutForm">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAEABAAAACAAAACAAAAAACAEAAAAABAAAA=</HashCode>
+      <HashCode>AAAAAAAAACAEABAAAACAAAACAAAAAAAAEAAAAABAAAA=</HashCode>
       <FileName>AboutForm.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Othello.Form1">
+  <Class Name="Othello.Othello">
     <Position X="4" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQCADKAAACBwAEoAAijCgFAqIAiQAgAQIkQAiQACAAE=</HashCode>

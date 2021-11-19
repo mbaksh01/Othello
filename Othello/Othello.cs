@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Othello
 {
-    public partial class Form1 : Form
+    public partial class Othello : Form
     {
         /// <summary>
         /// Player turn, used to switch between each player;
@@ -33,7 +33,7 @@ namespace Othello
         /// <summary>
         /// Initalise component.
         /// </summary>
-        public Form1()
+        public Othello()
         {
             InitializeComponent();
             InitaliseCardArray();

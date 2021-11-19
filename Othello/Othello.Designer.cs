@@ -1,7 +1,7 @@
 ﻿
 namespace Othello
 {
-    partial class Form1
+    partial class Othello
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace Othello
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Othello));
             this.panel1 = new System.Windows.Forms.Panel();
             this.playerTurn = new System.Windows.Forms.Label();
             this.PlayerTwoTxt = new System.Windows.Forms.TextBox();
