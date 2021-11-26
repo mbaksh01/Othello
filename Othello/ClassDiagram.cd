@@ -15,6 +15,10 @@
   </Class>
   <Class Name="Othello.Othello">
     <Position X="4" Y="0.5" Width="1.5" />
+    <Members>
+      <Method Name="Dispose" Hidden="true" />
+      <Method Name="Othello" Hidden="true" />
+    </Members>
     <TypeIdentifier>
       <HashCode>AQCADKAAACBwAEoAAijCgFAqIAiQAgAQIkQAiQACAAE=</HashCode>
       <FileName>Othello.cs</FileName>
